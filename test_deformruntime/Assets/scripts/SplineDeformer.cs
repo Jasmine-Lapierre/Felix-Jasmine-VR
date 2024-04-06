@@ -8,6 +8,9 @@ public class SplineDeformer : MonoBehaviour
     public float shrinkAmount; // Montant de réduction du rayon du spline
     public SplineComputer splineComputer; // Référence au composant SplineComputer du spline
     public GameObject doigt;
+    public GameObject zoneGrandir;
+    float heightGrowthAmount = 0.00002f;
+
     void Start()
     {
         Debug.Log(shrinkAmount);
@@ -18,9 +21,24 @@ public class SplineDeformer : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        // Project() permet d'obtenir la position, la rotation et le pourcentage du point spline le plus proche d'une coordonnées world
+            SplinePoint[] points = splineComputer.GetPoints();
+        if (other.tag=="ZoneGrandir"){
+
+                    for (int i = 1; i < splineComputer.pointCount; i++){
+                        points[i].position.y += heightGrowthAmount;
+                        heightGrowthAmount+=0.00002f;
+                        Debug.Log(i + "  " +points[i].position.y);
+                    }
+        zoneGrandir.transform.position += new Vector3 (0,heightGrowthAmount,0);
+
+        heightGrowthAmount = 0.002f;
+        splineComputer.SetPoints(points);
+
+        }
+        else if(other.tag=="Poterie"){
+ // Project() permet d'obtenir la position, la rotation et le pourcentage du point spline le plus proche d'une coordonnées world
             double positionSplinePercent = splineComputer.Project(doigt.transform.position).percent;
             int closestPointIndex = FindClosestPointIndex(positionSplinePercent);
             SplinePoint closestPoint = splineComputer.GetPoint(closestPointIndex);
@@ -36,6 +54,8 @@ public class SplineDeformer : MonoBehaviour
             splineComputer.SetPointSize(closestPointIndex, closestPoint.size - shrinkAmount);
             return;
             }
+        }
+       
     }
 // Méthode qui permet de trouver l'index du point le plus proche en partant d'un pourcentage.
     int FindClosestPointIndex(double targetPercent)
