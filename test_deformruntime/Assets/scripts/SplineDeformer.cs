@@ -9,7 +9,7 @@ public class SplineDeformer : MonoBehaviour
     public SplineComputer splineComputer; // Référence au composant SplineComputer du spline
     public GameObject doigt;
     public GameObject zoneGrandir;
-    float heightGrowthAmount = 0.00002f;
+    float heightGrowthAmount = 0.00015f;
 
     void Start()
     {
@@ -27,14 +27,15 @@ public class SplineDeformer : MonoBehaviour
         if (other.tag=="ZoneGrandir"){
 
                     for (int i = 1; i < splineComputer.pointCount; i++){
-                        points[i].position.y += heightGrowthAmount;
-                        heightGrowthAmount+=0.00002f;
+                       points[i].position.y += heightGrowthAmount*i;
+                        zoneGrandir.transform.position += new Vector3 (0,heightGrowthAmount,0);
+
+                     //   heightGrowthAmount+=Mathf.Pow(heightGrowthAmount,i);
                         Debug.Log(i + "  " +points[i].position.y);
+
                     }
         zoneGrandir.transform.position += new Vector3 (0,heightGrowthAmount,0);
-
-        heightGrowthAmount = 0.002f;
-        splineComputer.SetPoints(points);
+               splineComputer.SetPoints(points);
 
         }
         else if(other.tag=="Poterie"){
@@ -52,10 +53,13 @@ public class SplineDeformer : MonoBehaviour
                 Debug.Log("Shrink Amount: "+shrinkAmount);
 
             splineComputer.SetPointSize(closestPointIndex, closestPoint.size - shrinkAmount);
+
             return;
             }
+                           splineComputer.SetPoints(points);
+
         }
-       
+
     }
 // Méthode qui permet de trouver l'index du point le plus proche en partant d'un pourcentage.
     int FindClosestPointIndex(double targetPercent)
