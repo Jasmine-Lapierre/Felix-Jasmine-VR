@@ -7,7 +7,7 @@ public class SplineDeformer : MonoBehaviour
 {
     public float shrinkAmount; // Montant de réduction du rayon du spline
     public SplineComputer splineComputer; // Référence au composant SplineComputer du spline
-public GameObject doigt;
+    public GameObject doigt;
     void Start()
     {
         Debug.Log(shrinkAmount);
