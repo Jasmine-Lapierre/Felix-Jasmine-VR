@@ -5,7 +5,7 @@ using Dreamteck.Splines;
 
 public class SplineDeformer : MonoBehaviour
 {
-    public float shrinkAmount; // Montant de réduction du rayon du spline
+    private float shrinkAmount = 0.002f; // Montant de réduction du rayon du spline
     public SplineComputer splineComputer; // Référence au composant SplineComputer du spline
     public GameObject doigt;
     public GameObject zoneGrandir;
@@ -20,7 +20,9 @@ public class SplineDeformer : MonoBehaviour
             enabled = false; // Désactiver ce script s'il n'y a pas de composant SplineComputer attaché à l'objet
         }
     }
-
+    void ChangeShrinkAmount(float shrink){
+        shrinkAmount = shrink;
+    }
     void OnTriggerStay(Collider other)
     {
             SplinePoint[] points = splineComputer.GetPoints();
