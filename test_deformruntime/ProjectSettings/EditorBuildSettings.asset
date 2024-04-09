@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Jeu.unity
     guid: d6b96489cdf793846b53eab9889f6cb3
-  m_configObjects: {}
+  m_configObjects:
+    Unity.XR.PXR.Settings: {fileID: 11400000, guid: d727f968ad3f16840ac40baa2376596f,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1a43c95b65498ce46a3f89df123f7aec,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: c521c62deba475448ac821acb28c46be,
+      type: 2}
