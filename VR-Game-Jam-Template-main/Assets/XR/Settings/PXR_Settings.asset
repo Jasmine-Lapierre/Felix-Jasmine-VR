@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c52faa1787e89a4eaf8abdae2e6ae25, type: 3}
+  m_Script: {fileID: 11500000, guid: a24509c456d63f04fae6b8cadf032b80, type: 3}
   m_Name: PXR_Settings
   m_EditorClassIdentifier: 
   stereoRenderingModeAndroid: 0
