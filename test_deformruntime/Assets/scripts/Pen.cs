@@ -18,7 +18,7 @@ public class Pen : MonoBehaviour
     private Vector2 _lastTouchPos;
     private Vector2 _touchPos;
     private bool _touchedLastFrame;
-    private Quaternion _lastTouchRot;
+    //private Quaternion _lastTouchRot;
   
 
     void Start()
@@ -61,13 +61,13 @@ public class Pen : MonoBehaviour
                         _paintable.texture.SetPixels(lerpx, lerpy, _penSize, _penSize, _colors);
                     }
 
-                    transform.rotation = _lastTouchRot;
+                    //transform.rotation = _lastTouchRot;
 
                     _paintable.texture.Apply();
                 }
 
                 _lastTouchPos = new Vector2(x, y);
-                _lastTouchRot = transform.rotation;
+                //_lastTouchRot = transform.rotation;
                 _touchedLastFrame = true;
                 return;
             }
