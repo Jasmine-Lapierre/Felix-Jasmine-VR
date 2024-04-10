@@ -44,6 +44,8 @@ public class Pen : MonoBehaviour
                     _paintable = _touch.transform.GetComponent<Paintable>();
                 }
 
+                Debug.Log("Guhguuhg");
+
                 _touchPos = new Vector2(_touch.textureCoord.x, _touch.textureCoord.y);
 
                 var x = (int)(_touchPos.x * _paintable.textureSize.x - (_penSize / 2));
