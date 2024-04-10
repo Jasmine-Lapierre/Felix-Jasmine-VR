@@ -231,22 +231,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.xr.interaction.toolkit": {
-      "version": "2.5.2",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.inputsystem": "1.7.0",
-        "com.unity.mathematics": "1.2.6",
-        "com.unity.ugui": "1.0.0",
-        "com.unity.xr.core-utils": "2.2.3",
-        "com.unity.xr.legacyinputhelpers": "2.1.10",
-        "com.unity.modules.audio": "1.0.0",
-        "com.unity.modules.imgui": "1.0.0",
-        "com.unity.modules.physics": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.xr.legacyinputhelpers": {
       "version": "2.1.10",
       "depth": 1,
@@ -280,32 +264,6 @@
         "com.unity.xr.core-utils": "2.1.1"
       },
       "url": "https://packages.unity.com"
-    },
-    "com.unity.xr.picoxr": {
-      "version": "file:C:/Users/Jasmine Lapierre/Downloads/PICO Unity Integration SDK_250",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {
-        "com.unity.xr.management": "4.0.0",
-        "com.unity.xr.interaction.toolkit": "2.0.0"
-      }
-    },
-    "io.extendreality.tilia.sdk.picointegration.unity": {
-      "version": "1.0.12",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "io.extendreality.zinnia.unity": "2.15.0",
-        "com.unity.xr.interaction.toolkit": "2.3.0"
-      },
-      "url": "https://registry.npmjs.org"
-    },
-    "io.extendreality.zinnia.unity": {
-      "version": "2.15.0",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://registry.npmjs.org"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

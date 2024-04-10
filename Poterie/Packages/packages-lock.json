@@ -217,15 +217,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.xr.picoxr": {
-      "version": "file:../Assets/PICO Unity Integration SDK_250",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {
-        "com.unity.xr.management": "4.0.0",
-        "com.unity.xr.interaction.toolkit": "2.0.0"
-      }
-    },
     "io.extendreality.tilia.camerarigs.trackedalias.unity": {
       "version": "2.5.2",
       "depth": 0,
