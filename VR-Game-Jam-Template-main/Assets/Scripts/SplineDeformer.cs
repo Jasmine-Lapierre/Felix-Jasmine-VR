@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Dreamteck.Splines;
+using UnityEngine.InputSystem;
 
 public class SplineDeformer : MonoBehaviour
 {
@@ -10,33 +11,62 @@ public class SplineDeformer : MonoBehaviour
     public GameObject doigt;
     public GameObject zoneGrandir;
     float heightGrowthAmount = 0.00015f;
+    public InputActionReference bouton;
+    bool rapetisser = true;
+
+    private void Awake(){
+
+    }
+
 
     void Start()
     {
-        Debug.Log(shrinkAmount);
+
+bouton.action.started += x => shrinkNegatif();
+bouton.action.canceled += x => shrinkPositif();
+
         if (splineComputer == null)
         {
             Debug.LogError("Aucun composant SplineComputer trouvé sur cet objet.");
             enabled = false; // Désactiver ce script s'il n'y a pas de composant SplineComputer attaché à l'objet
         }
     }
-    void ChangeShrinkAmount(float shrink){
-        shrinkAmount = shrink;
+    void shrinkNegatif(){
+shrinkAmount = -0.002f;
+Debug.Log("Negatif");
+rapetisser = false;
+    }
+        void shrinkPositif(){
+            Debug.Log("Positif");
+shrinkAmount = 0.002f;
+rapetisser = true;
+
     }
     void OnTriggerStay(Collider other)
     {
             SplinePoint[] points = splineComputer.GetPoints();
         if (other.tag=="ZoneGrandir"){
-
-                    for (int i = 1; i < splineComputer.pointCount; i++){
+if(rapetisser){
+ for (int i = 1; i < splineComputer.pointCount; i++){
                        points[i].position.y += heightGrowthAmount*i;
                         zoneGrandir.transform.position += new Vector3 (0,heightGrowthAmount,0);
 
-                     //   heightGrowthAmount+=Mathf.Pow(heightGrowthAmount,i);
                         Debug.Log(i + "  " +points[i].position.y);
 
                     }
         zoneGrandir.transform.position += new Vector3 (0,heightGrowthAmount,0);
+}
+else{
+ for (int i = 1; i < splineComputer.pointCount; i++){
+                       points[i].position.y -= heightGrowthAmount*i;
+                        zoneGrandir.transform.position -= new Vector3 (0,heightGrowthAmount,0);
+
+                        Debug.Log(i + "  " +points[i].position.y);
+
+                    }
+        zoneGrandir.transform.position -= new Vector3 (0,heightGrowthAmount,0);
+}
+                   
                splineComputer.SetPoints(points);
 
         }

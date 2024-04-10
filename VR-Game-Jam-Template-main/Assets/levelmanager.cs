@@ -10,7 +10,6 @@ public class levelmanager : MonoBehaviour
     public XRKnob roue;
     private float FramePrecedent;
     // Start is called before the first frame update
-  
 
 
     // Update is called once per frame
@@ -19,7 +18,10 @@ public class levelmanager : MonoBehaviour
 
         if (roue.value ==1&roue.value != FramePrecedent){
           GameObject poterie = GameObject.FindWithTag("Poterie");
+          if(poterie){
             poterie.tag = "Paintable";
+
+          }
             Debug.Log("Aok AOSKDOPASKDOPASKDOPKASPDKASKDOPAKSDKAOSPDKOASKDASDPOAKSDOPs");
         }
         FramePrecedent = roue.value;
